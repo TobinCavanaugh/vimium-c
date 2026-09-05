@@ -207,7 +207,8 @@ export const bgSettings_ = {
     __proto__: null as never,
     filterLinkHints: "f", hideHud: "h", ignoreReadonly: "y", keyLayout: "l", mouseReachable: "e",
     keyboard: "k", keyupTime: "u", linkHintCharacters: "c", linkHintNumbers: "n", passEsc: "p",
-    regexFindMode: "r", smoothScroll: "s", scrollStepSize: "t", waitForEnter: "w"
+    regexFindMode: "r", smoothScroll: "s", scrollStepSize: "t", waitForEnter: "w",
+    spatialGridEnabled: "x", spatialGridCols: "q", spatialGridRows: "z", spatialGridDebug: "i"
   } satisfies SettingsNS.AutoSyncedNameMap & SafeObject as SettingsNS.AutoSyncedNameMap,
   complexValuesToLoad_: {
     __proto__: null as never, c: 1, n: 1, l: 1, d: 1, p: 1, y: 1

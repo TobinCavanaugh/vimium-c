@@ -25,7 +25,7 @@ let zIndexes_: Stacks | null | undefined | 0
 
 export { activeHint_, zIndexes_ }
 export function set_zIndexes_ (_newZIndexes: null): void { zIndexes_ = _newZIndexes }
-export function set_maxPrefixLen_ (_newMaxPrefixLen: 0): void { maxPrefixLen_ = _newMaxPrefixLen }
+export function set_maxPrefixLen_ (_newMaxPrefixLen: number): void { maxPrefixLen_ = _newMaxPrefixLen }
 export const hintFilterReset = (): void => { pageNumberHintArray = zIndexes_ = activeHint_ = null }
 
 export const createHint = (link: Hint): HintItem => {

@@ -666,6 +666,10 @@ export const onKeyMappingsError_ = (err: string | true): void => {
 const linkHintCharactersOption_ = Option_.all_.linkHintCharacters
 const linkHintNumbersOption_ = Option_.all_.linkHintNumbers
 const filterLinkHintsOption_ = Option_.all_.filterLinkHints
+const spatialGridEnabledOption_ = Option_.all_.spatialGridEnabled
+const spatialGridColsOption_ = Option_.all_.spatialGridCols
+const spatialGridRowsOption_ = Option_.all_.spatialGridRows
+const spatialGridDebugOption_ = Option_.all_.spatialGridDebug
 linkHintCharactersOption_.onSave_ = linkHintNumbersOption_.onSave_ = function (): void {
   this.showError_(!this.element_.style.display && this.previous_.length < GlobalConsts.MinHintCharSetSize
       ? "Too few characters for LinkHints" : "")
@@ -681,6 +685,21 @@ filterLinkHintsOption_.onSave_ = function (): void {
   })
 }
 delayBinding_(filterLinkHintsOption_.element_, "change", filterLinkHintsOption_.onSave_, true)
+
+spatialGridEnabledOption_.onSave_ = function (): void {
+  nextTick_((): void => {
+    const enabled = spatialGridEnabledOption_.readValueFromElement_()
+    const spatialBox = Option_.all_.spatialGridDebug.element_.parentElement as HTMLElement | null
+    if (spatialBox) { spatialBox.style.display = enabled ? "" : "none" }
+    BooleanOption_.ToggleDisabled_(spatialGridColsOption_.element_, !enabled)
+    BooleanOption_.ToggleDisabled_(spatialGridRowsOption_.element_, !enabled)
+    BooleanOption_.ToggleDisabled_(spatialGridDebugOption_.element_, !enabled)
+    void spatialGridColsOption_.onSave_()
+    void spatialGridRowsOption_.onSave_()
+    void spatialGridDebugOption_.onSave_()
+  })
+}
+delayBinding_(spatialGridEnabledOption_.element_, "change", spatialGridEnabledOption_.onSave_, true)
 
 const keyLayout = Option_.all_.keyLayout
 const [elAlwaysIgnore, elIgnoreIfAlt, elIgnoreIfNotASCII, elIgnoreCaps, elMapModifier, elInPrivResistFp] =

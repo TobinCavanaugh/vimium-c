@@ -164,6 +164,49 @@ shortcut userCustomized1 command="goBack"
         </div></td>
       </tr>
       <tr>
+        <td class="caption" data-i="spatialGrid">Spatial grid hints</td>
+        <td>
+          <label class="booleanOption" tabindex="-1" aria-hidden="true">
+            <input id="spatialGridEnabled" type="checkbox" tabindex="-1" aria-hidden="true" data-model="Boolean" />
+            <span data-i="spatialGridEnabled" class="checkboxHint" role="checkbox" tabindex="0" aria-hidden="false">
+              Use spatial-hierarchical grid hints</span>
+          </label>
+          <div class="info">
+            <span data-i="spatialGridDesc">Assign hints by screen position instead of sequential characters.</span>
+          </div>
+          <div id="spatialGridOptions" style="margin-top: 6px;">
+            <label class="booleanOption innerLine" style="display: none;" tabindex="-1" aria-hidden="true">
+              <input id="spatialGridDebug" type="checkbox" tabindex="-1" aria-hidden="true" data-model="Boolean" />
+              <span data-i="spatialGridDebug" class="checkboxHint" role="checkbox" tabindex="0" aria-hidden="false">
+                Show debug grid overlay</span>
+            </label>
+            <table class="code" style="width: 100%; margin-top: 6px;">
+              <tbody>
+                <tr>
+                  <td style="width: 50%;">
+                    <label class="numberOption" style="display: block;">
+                      <input id="spatialGridCols" type="number" min="2" max="12" step="1" lang="en"
+                          data-model="Number" autocomplete="off" />
+                      <span data-i="spatialGridCols" class="optionText">Columns</span>
+                    </label>
+                  </td>
+                  <td style="width: 50%;">
+                    <label class="numberOption" style="display: block;">
+                      <input id="spatialGridRows" type="number" min="2" max="12" step="1" lang="en"
+                          data-model="Number" autocomplete="off" />
+                      <span data-i="spatialGridRows" class="optionText">Rows</span>
+                    </label>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </td>
+        <td class="help"><div class="help-inner" data-i="spatialGridHelp">
+          When enabled, link hints are assigned from a fixed grid laid over the viewport.
+          Dense areas subdivide automatically using compound keys.</div></td>
+      </tr>
+      <tr>
         <td class="caption" data-i="29">Default search engine</td>
         <td>
           <input id="searchUrl" type="text" inputmode="url" data-model="NonEmptyText" data-check="" autocomplete="off"/>

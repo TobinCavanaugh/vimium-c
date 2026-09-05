@@ -311,6 +311,10 @@ declare namespace SettingsNS {
     /** scrollStepSize */ t: ["scrollStepSize", number];
     /** smoothScroll */ s: ["smoothScroll", boolean];
     /** acceptable upper limit of spent time before keyup */ u: ["keyupTime", number];
+    /** Enable spatial-hierarchical grid hints */ x: ["spatialGridEnabled", boolean];
+    /** Number of grid columns (X) for spatial grid hints */ q: ["spatialGridCols", number];
+    /** Number of grid rows (Y) for spatial grid hints */ z: ["spatialGridRows", number];
+    /** Render a debug canvas overlay showing the spatial grid */ i: ["spatialGridDebug", boolean];
   }
   interface ManuallySyncedItems {
     /** darkMode */ d: ["darkMode", " D" | ""];

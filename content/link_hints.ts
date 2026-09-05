@@ -120,6 +120,9 @@ import {
   getMatchingHints, activeHint_, hintFilterReset, set_maxPrefixLen_, set_zIndexes_, adjustMarkers_old_cr_edge,
   createHint
 } from "./hint_filters"
+import {
+  assignSpatialKeys, redrawDebugOverlay, clearDebugOverlay
+} from "./spatial_hints"
 import { executeHintInOfficer, removeFlash, set_removeFlash } from "./link_actions"
 import { hover_async, lastHovered_ } from "./async_dispatcher"
 import { HookAction, hookOnWnd, contentCommands_, runFallbackKey } from "./port"
@@ -249,7 +252,9 @@ export const activate = (options: ContentOptions, count: number, force?: 2 | Tim
     noHUD_ = !(useFilter || topFrameInfo.v[3] > 40 && topFrameInfo.v[2] > 320) || options.hideHUD ? 1 : 0
     useFilter ? /*#__NOINLINE__*/ initFilterEngine(allHints as readonly FilteredHintItem[])
         : initAlphabetEngine(allHints)
+    if (!useFilter) { assignSpatialKeys(allHints) }
     renderMarkers(allHints)
+    redrawDebugOverlay()
     coreHints.h = -getTime()
     for (const frame of frameArray) {
       frame.s.r(frame.h, frame.v, vApi);
@@ -784,6 +789,7 @@ export const clear = (onlySelfOrEvent?: 0 | 1 | Event, suppressTimeout?: number)
     coreHints.d = 0
     set_grabBackFocus(useFilter_ = false)
     chars_ = "";
+    clearDebugOverlay();
     removeBox()
     hud_tipTimer || hudHide()
     OnFirefox || oldMode < HintMode.max_mouse_events + 1 && !manager
@@ -824,7 +830,9 @@ const onFrameUnload = (officer: HintOfficer): void => {
     } else {
       hints_!.forEach(hint => { hint.m.innerText = "" })
       initAlphabetEngine(hints_!)
+      assignSpatialKeys(hints_!)
       renderMarkers(hints_!)
+      redrawDebugOverlay()
     }
 }
 

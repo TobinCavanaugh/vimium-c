@@ -322,7 +322,11 @@ declare namespace SettingsNS {
     vimSync: boolean | null;
     vomnibarPage: string;
     omniBlockList: string;
-    keyLayout: kKeyLayout
+    keyLayout: kKeyLayout;
+    spatialGridEnabled: boolean;
+    spatialGridCols: number;
+    spatialGridRows: number;
+    spatialGridDebug: boolean;
   }
   interface PersistentSettings extends FrontendSettings, BackendSettings {}
 

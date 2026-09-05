@@ -512,7 +512,11 @@ js\\:|Js: javascript:\\ $S; JavaScript`,
     },
     vimSync: null,
     vomnibarPage: "front/vomnibar.html",
-    waitForEnter: true
+    waitForEnter: true,
+    spatialGridEnabled: false,
+    spatialGridCols: 4,
+    spatialGridRows: 4,
+    spatialGridDebug: false
 }
 
 export const frontUpdateAllowed_: ReadonlyArray<keyof SettingsNS.FrontUpdateAllowedSettings> = [
@@ -523,7 +527,8 @@ export const valuesToLoad_ = {
     __proto__: null as never,
     filterLinkHints: "f", hideHud: "h", ignoreReadonly: "y", keyLayout: "l", keyboard: "k", keyupTime: "u",
     linkHintCharacters: "c", linkHintNumbers: "n", mouseReachable: "e", passEsc: "p",
-    regexFindMode: "r", smoothScroll: "s", scrollStepSize: "t", waitForEnter: "w"
+    regexFindMode: "r", smoothScroll: "s", scrollStepSize: "t", waitForEnter: "w",
+    spatialGridEnabled: "x", spatialGridCols: "q", spatialGridRows: "z", spatialGridDebug: "i"
 } satisfies SettingsNS.AutoSyncedNameMap & SafeObject as SettingsNS.AutoSyncedNameMap
 
 export const kSettingsToUpgrade_: readonly SettingsNS.LocalSettingNames[] = [
